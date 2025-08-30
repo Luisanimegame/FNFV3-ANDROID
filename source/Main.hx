@@ -77,7 +77,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		initialState = #if desktop TitleState #else HTMLState #end;
+		initialState = TitleState;
 		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, #if (flixel < "5.0.0") zoom, #end skipSplash, startFullscreen));
 		
