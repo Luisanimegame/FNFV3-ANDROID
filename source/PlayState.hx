@@ -219,10 +219,11 @@ class PlayState extends MusicBeatState
 	#if desktop
 	// Discord RPC variables
 	var iconRPC:String = "";
-	var songLength:Float = 0;
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+	
+	var songLength:Float = 0;
 
 	public static var devMode = false; // For teh devs
 

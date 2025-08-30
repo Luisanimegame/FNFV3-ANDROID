@@ -1,4 +1,4 @@
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
 import LoadingState.MultiCallback;
 import openfl.Assets;
