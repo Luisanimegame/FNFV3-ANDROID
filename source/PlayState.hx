@@ -2380,11 +2380,7 @@ class PlayState extends MusicBeatState
 	public function startVideo(name:String)
 		{
 			var filepath:String = Paths.video(name);
-			#if sys
-			if(!FileSystem.exists(filepath))
-			#else
 			if(!OpenFlAssets.exists(filepath))
-			#end
 			{
 				FlxG.log.warn('Couldnt find video file: ' + name);
 				return;
