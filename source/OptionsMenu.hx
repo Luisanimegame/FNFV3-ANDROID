@@ -1,6 +1,6 @@
 package;
 
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 import Controls.KeyboardScheme;
 import Controls.Control;
 import flash.text.TextField;
