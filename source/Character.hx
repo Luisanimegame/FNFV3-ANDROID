@@ -896,7 +896,7 @@ class Character extends FlxSprite
 							if (line[6] == "true")
 								flipYa = true;
 
-							animation.addByPrefix(line[1], line[2], Std.parseFloat(line[3]), loopa, flipXa, flipYa);
+							animation.addByPrefix(line[1], line[2], Std.int(Std.parseFloat(line[3])), loopa, flipXa, flipYa);
 						case 'offset':
 							addOffset(line[1], Std.parseFloat(line[2]), Std.parseFloat(line[3]));
 						case 'pixel':
@@ -908,7 +908,7 @@ class Character extends FlxSprite
 						case 'flipY':
 							flipY = true;
 						case 'size':
-							setGraphicSize(Std.parseFloat(line[1]), Std.parseFloat(line[2]));
+							setGraphicSize(Std.int(Std.parseFloat(line[1])), Std.int(Std.parseFloat(line[2])));
 					}
 				}
 
