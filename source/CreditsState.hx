@@ -1,0 +1,62 @@
+package;
+
+import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.FlxG;
+
+class CreditsState extends MusicBeatState {
+    var curSelected:Int = 0;
+
+    var grpCredits:Array<String> = ["poe","x8c8r","didgie","jo560hs","xario","roborecona","artsy","cobblestoneface","earthlivecountry","thomicfee","bogaboga"];
+    var grpCreditsPics:FlxTypedGroup<FlxSprite>;
+
+    var devCreditImage:FlxSprite;
+
+    public override function create() {
+        super.create();
+
+        grpCreditsPics = new FlxTypedGroup<FlxSprite>();
+        add(grpCreditsPics);
+
+        for (i in 0...grpCredits.length) {
+            var pic:FlxSprite = new FlxSprite(i * 1280).loadGraphic(Paths.image("credits/"+grpCredits[i]));
+            grpCreditsPics.add(pic);
+        }
+        
+        #if mobile addVPad(LEFT_RIGHT, B); #end
+
+        scroll();
+    }
+
+    public override function update(elapsed:Float) {
+        super.update(elapsed);
+        
+		if (controls.BACK)
+		{
+			FlxG.switchState(new MainMenuState());
+		}
+
+        if (controls.RIGHT_P)
+            scroll(1);
+        if (controls.LEFT_P)
+            scroll(-1);
+    }
+
+    function scroll(change:Int = 0) {
+        FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+
+        curSelected += change;
+        
+		if (curSelected < 0)
+			curSelected = grpCredits.length - 1;
+		if (curSelected >= grpCredits.length)
+			curSelected = 0;
+
+        for (i in 0...grpCreditsPics.length) {
+            var p = grpCreditsPics.members[i];
+            FlxTween.tween(p, { "x": (i - curSelected) * 1280}, 0.1, { ease: FlxEase.expoInOut});
+        }
+    }
+}
